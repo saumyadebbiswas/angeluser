@@ -24,3 +24,73 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.ion-button button.button-native{
+    background: #ff8a65 !important;
+}
+button{ background-color: transparent !important;}
+
+.success{
+    background: #ff8a65!important;
+    color: #fff;
+}
+.toolbar-container{ background: #000 !important;}
+.toolbar-background{ background: #000 !important;}
+.overscroll{ background: coral !important;}
+.list-ios{ background: coral !important}
+.s-ion-icon{ display: none !important;}
+.icon-inner{ display: none !important;}
+.ion-focusable a{ box-shadow: none !important; border: none !important;}
+.item-detail-icon{ display: none;}
+
+.alert-checkbox-group.sc-ion-alert-ios, .alert-radio-group.sc-ion-alert-ios {
+    
+    border-top: none;
+    
+}
+
+.ng2-tag-input__text-input[_ngcontent-ssg-c4] {
+    
+    padding: 0!important;
+    }
+
+.alert-message.sc-ion-alert-ios:empty {
+   
+    padding-bottom: 0;
+}
+.alert-head.sc-ion-alert-ios{
+    padding: 0;
+}
+
+// -------manu css-------------
+
+.manu-header{
+    background: #ff8a65;
+    color: #fff;
+}
+
+.manu-bar{
+    color: #fff;
+}
+.info-btn{
+    font-size: 20px;
+    color: #fff;
+    z-index: 99;
+    display: block;
+    float: right;
+    padding-right: 3%;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.header-md .toolbar-background{
+    background-color: #000 !important;
+}
+
+.my-toolbar{
+    --background:  #ff8a65;
+}
+
+// ---------end manu css-----------

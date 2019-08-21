@@ -1,0 +1,39 @@
+<ion-content>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+          <div text-center>
+            <p class="logo-img"><img src="../../assets/images/logo_new.png" alt="" /></p>
+            <h4>Sign In</h4>
+            <hr>
+          </div>
+
+          <div padding>
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-phone"></i></span>
+              <ion-input type="text" class="info-frm" id="id_phone" formControlName="phone" placeholder="Phone Number"></ion-input>
+            </ion-item>
+    
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-lock"></i></span>
+              <ion-input type="password" class="info-frm" id="id_password" formControlName="password" placeholder="Password" ></ion-input>
+            </ion-item>
+          </div>
+    
+          <div padding>
+            <button type="submit" size="large" expand="block" class="btn sing-btn">SIGN IN</button>
+            <p class="forgot">
+              <span><span>Forgot Password ?</span></span> 
+              <span class="regi" (click)="moveRegister()">
+                Register Now
+              </span> 
+            </p>
+          </div>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,67 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These 
+// styles are for the entire app and not just one component. Additionally, this 
+// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// and used throughout the application.
+
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These 
+// styles are for the entire app and not just one component. Additionally, this 
+// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// and used throughout the application.
+
+.manu-header{
+    background: #ff997a;
+}
+
+.cont-bg{
+    background: #ff997a!important;
+    color: #fff;
+}
+.user-details{
+    height: 100% !important;
+    padding-top: 10px;
+    padding-left: 54px;
+    width: 100%;
+    background: #ff997a;
+    text-align: left !important;
+    color: #fff;
+}
+.user-details img{
+    width: 30%;
+}
+
+.manu-link{
+    list-style: none;
+    padding: 0;
+}
+
+.manu-link li{
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+.manu-link li a{
+    color: #fff;
+}
+
+.user-details p{
+    padding-bottom: 30px;
+}
+
+.toolbar-container{
+    height: 220px!important;
+}
+.header-ios ion-toolbar:last-child {
+    --border-width: 0!important;
+}
+.icon-inner, svg {
+    display: none!important;
+    
+}
+.ion-content, svg{
+    display: none!important;
+}
+.overscroll{ background:#ff997a !important;}
+.icon-inner svg{ display: none !important;}

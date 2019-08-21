@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Categories
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container category-list">
+    <div class="row">
+      <div class="col-6 category">
+        <div class="product-img">
+          <img src="../../assets/images/all-categories.jpg" alt="All Product" (click)="moveProduct('B', brand_id)" />
+        </div>
+        <div class="category-name" (click)="moveProduct('B', brand_id)">All</div>
+      </div>
+
+      <div class="col-6 category" *ngFor="let cat of categories">
+          <div class="product-img">
+        <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/category/{{cat.cat_image_name}}" alt="{{cat.cat_name}}" (click)="moveProduct('C', cat.cat_id)" />
+          </div>
+        <div class="category-name" (click)="moveProduct('C', cat.cat_id)">{{cat.cat_name}}</div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+    
+  

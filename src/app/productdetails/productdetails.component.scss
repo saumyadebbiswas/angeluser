@@ -1,0 +1,28 @@
+.product-box img{
+    width: 100%;
+    height: 300px;
+}
+
+.product-description p{
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 4px;
+}
+.price{
+    color: #ff8a65;
+}
+
+.edit{
+    background: #ff8a65;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 100px;
+    line-height: 3;
+}
+.edit span{
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}

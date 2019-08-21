@@ -1,0 +1,36 @@
+<!-- <ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button class="manu-bar"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="manu-header">
+      Brands
+    </ion-title>
+    <span class="info-btn"><i class="fa fa-ellipsis-v"></i></span>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Brands
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 brand">
+      <div *ngFor="let brand of brands">
+        <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/brand/{{brand.image_name}}" alt="{{brand.name}}" (click)="moveCategory(brand.id)" />
+      </div>
+    </div>
+  </div>
+  
+</div>
+</ion-content>

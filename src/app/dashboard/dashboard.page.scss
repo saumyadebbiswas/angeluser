@@ -1,0 +1,39 @@
+// -------manu css-------------
+
+.manu-header{
+    background: #ff8a65;
+    color: #fff;
+}
+
+.manu-bar{
+    color: #fff;
+}
+.info-btn{
+    font-size: 20px;
+    color: #fff;
+    z-index: 99;
+    display: block;
+    float: right;
+    padding-right: 3%;
+    position: relative;
+    cursor: pointer;
+}
+
+// ---------end manu css-----------
+.product-name{
+    position: absolute;
+    font-size: 14px;
+    text-align: center;
+    left: 0;
+    color: #fff;
+    bottom: 18px;
+    width: 100%;
+}
+.product{
+    position: relative;
+    padding: 10px 15px;
+}
+
+.product-list{
+    padding: 18px!important;
+}

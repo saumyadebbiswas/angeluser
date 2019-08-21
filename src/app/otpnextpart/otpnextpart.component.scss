@@ -1,0 +1,69 @@
+.logo-img img{
+    width: 50%;
+    margin: 35px auto;
+
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    border: 0;
+    width: 50%;
+    border-top: 2px solid #ff8a65;
+  }
+
+  .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+.frm .item-inner{
+    border-bottom: 2px solid #180d52!important;
+    padding-left: 10px;
+}
+
+.forgot{
+    text-align: center;
+    color: #000!important;
+    padding-top: 20px;
+    font-size: 12px;
+}
+
+.regi{
+    text-align: right;
+    float: right;
+}
+
+.forgot a{
+    
+    color: #180d52!important;
+    
+} 
+
+.info-frm{
+    padding-left: 10px!important;
+}
+
+.sing-btn{
+    background: #ff8a65!important;
+    color: #fff;
+    width: 100%;
+    padding: 1rem 0;
+}
+.otp-text{
+    text-align: center;
+    letter-spacing: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+

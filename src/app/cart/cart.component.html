@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Cart
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+
+    <div class="row product-box" *ngFor="let cartitem of cart; let i = index">
+
+      <div class="col-7 product-description">
+        <h4>{{cartitem.pro_name}}</h4>
+        <p>{{cartitem.pro_description | slice:0:60}}...</p>
+        <!--<p>Date: 25 Dec 2018, 12:09 PM</p>-->
+        <p>Date: {{cartitem.cart_created | date: "MMM dd, yyyy hh:mm a"}}</p>
+        <p>₹{{cartitem.cart_product_old_price}}/Piece</p>
+      </div>
+
+      <div class="col-5 detail-area">
+        <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/product/{{cartitem.pro_image_name}}" alt="{{cartitem.pro_name}}" />
+        <!-- <a href="/product">Details</a> -->
+        <!-- <div class="dropdown">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            Qty:1
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">1</a>
+            <a class="dropdown-item" href="#">2</a>
+            <a class="dropdown-item" href="#">3</a>
+            
+          </div>
+        </div> -->
+
+        <div class="input-group plus-minus-input">
+
+          <div class="input-group-button">
+            <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity" (click)="addQty(i, 'm')">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <!-- <input class="input-group-field" type="number" name="quantity_{{i}}" value="{{cartitem.cart_product_qty}}"> -->
+
+          <input class="input-group-field" type="number" [(ngModel)]="quanty['qty_'+i]">
+
+
+          <div class="input-group-button">
+            <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity" (click)="addQty(i, 'p')">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div> 
+
+      </div>
+      
+      <div class="cart-btn">
+        <button type="button" size="large" expand="block" class="btn sing-btn" (click)="cartUpdate(i, cartitem.cart_id)">Update</button>
+        <button type="button" size="large" expand="block" class="btn sing-btn" (click)="cartRemove(cartitem.cart_id)">Remove</button>
+      </div>
+      
+    </div>
+
+    <div *ngIf="cart.length > 0" (click)="placeOrder()" class="edit">
+      <span>Place Order</span>
+    </div>
+    
+  </div>
+</ion-content>

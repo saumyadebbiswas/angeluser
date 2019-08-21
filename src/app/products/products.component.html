@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Products Management
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+  
+          <section>
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-search"></i></span>
+              <ion-input type="text" class="info-frm" id="search" placeholder="Search" ></ion-input>
+            </ion-item>
+
+            <div class="row">
+              <div class="col-6 product-row" *ngFor="let product of products">
+    
+                <div class="product-box">
+                  <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/product/{{product.pro_image_name}}" alt="{{product.pro_name}}" (click)="moveProductDetails(product.pro_id)" />
+                  <h4>{{product.pro_name}}</h4>
+                  <p>₹{{product.pro_price_per_piece}}/Price</p>
+                </div>
+                
+              </div>
+            </div>
+
+          </section>
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  
