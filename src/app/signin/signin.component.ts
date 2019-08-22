@@ -43,6 +43,11 @@ export class SigninComponent implements OnInit {
       phone: new FormControl(),
       password: new FormControl()
     });
+
+    this.signinForm.patchValue({
+      phone:"",
+      password:""
+    });
   }
 
   async onSubmit() {
@@ -51,15 +56,14 @@ export class SigninComponent implements OnInit {
     });
     this.presentLoading(loading);
 
-    this.phone = this.signinForm.get('phone').value;
-    this.password = this.signinForm.get('password').value;
-
-    let sendData = {
-      phone: this.phone,
-      password: this.password
-    }
+    this.phone = this.signinForm.get('phone').value.trim();
+    this.password = this.signinForm.get('password').value.trim();
 
     if(this.phone != null && this.password != null) {
+      let sendData = {
+        phone: this.phone,
+        password: this.password
+      }
 
       this.data.login(sendData).subscribe(
         async res => {  
@@ -73,8 +77,12 @@ export class SigninComponent implements OnInit {
             this.events.publish('userLogin', JSON.stringify({loggedin: true}));
             this.menuCtrl.enable(true);
 
+            this.loadingController.dismiss();
+
             this.router.navigate(['/brands']); 
           } else {
+            this.loadingController.dismiss();
+
             const alert = await this.alertCtrl.create({
               header: 'Error!',
               message: res.message,
@@ -84,6 +92,8 @@ export class SigninComponent implements OnInit {
           }          
       });
     } else {
+      this.loadingController.dismiss();
+      
       //alert("Enter full credentials!");
       const alert = await this.alertCtrl.create({
         header: 'Error!',
@@ -92,18 +102,10 @@ export class SigninComponent implements OnInit {
         });
       alert.present();
     }
-
-    this.hideLoader();
   }
 
   async presentLoading(loading) {
 		return await loading.present();
-  }
-  
-  hideLoader() {
-    setTimeout(() => {
-      this.loadingController.dismiss();
-    });
   }
 
   moveRegister() {

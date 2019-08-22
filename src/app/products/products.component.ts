@@ -67,17 +67,11 @@ export class ProductsComponent implements OnInit {
         });
     }
     
-    this.hideLoader();
+    this.loadingController.dismiss();
   }
 
   async presentLoading(loading) {
 		return await loading.present();
-  }
-  
-  hideLoader() {
-    setTimeout(() => {
-      this.loadingController.dismiss();
-    });
   }
 
   moveProductDetails(product_id) {

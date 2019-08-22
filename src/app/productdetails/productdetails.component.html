@@ -13,17 +13,24 @@
   <div class="container">
 
     <div class="row product-box">
-      <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/product/{{product.pro_image_name}}" alt="{{product.pro_name}}" />
+      <img *ngIf="allimages.length == 0" src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/product/{{product.pro_image_name}}" alt="{{product.pro_name}}" />
       
+      <ion-slides *ngIf="allimages.length > 0" pager="true" [options]="slideOptsOne" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+        <ion-slide *ngFor="let image of allimages">
+          <img class="slide-image" src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/gallery/{{image}}" alt="" />
+        </ion-slide>
+      </ion-slides>
+
       <div class="col-12 product-description">
         <h4>{{product.pro_name}}</h4>
         <p>{{product.pro_description}} </p>
+        <p>Design ID: {{product.pro_design_num}} </p>
         <p>Colors: {{product.pro_num_of_color}} </p>
         <p>Order Terms</p>
         <p>Minimum Order Quantity {{product.pro_min_order_box_qty}} Boxes</p>
-        <p class="price">₹{{product.pro_price_per_piece}}/Piece | Quantity Per Box: 6 Pieces</p>
+        <p class="price">₹{{product.pro_price_per_piece}}/Piece | Quantity Per Box: {{product.pro_qty_per_box}} Pieces</p>
 
-        <div *ngIf="check_cart == false" class="edit" (click)="addToCart(product.pro_price_per_piece)">
+        <div *ngIf="check_cart == false" class="edit" (click)="addToCart(product.pro_price_per_piece, product.pro_min_order_box_qty)">
           <span>Add To Cart</span>
         </div>
 

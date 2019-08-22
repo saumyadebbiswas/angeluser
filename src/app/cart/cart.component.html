@@ -40,18 +40,17 @@
         <div class="input-group plus-minus-input">
 
           <div class="input-group-button">
-            <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity" (click)="addQty(i, 'm')">
+            <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity" (click)="addQty(i, 'm', cartitem.cart_old_min_order)">
               <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
           </div>
 
           <!-- <input class="input-group-field" type="number" name="quantity_{{i}}" value="{{cartitem.cart_product_qty}}"> -->
-
           <input class="input-group-field" type="number" [(ngModel)]="quanty['qty_'+i]">
 
 
           <div class="input-group-button">
-            <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity" (click)="addQty(i, 'p')">
+            <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity" (click)="addQty(i, 'p', cartitem.cart_old_min_order)">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </div>

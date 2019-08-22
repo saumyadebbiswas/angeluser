@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +18,8 @@ export class CartComponent implements OnInit {
   constructor(
     private data:DataService,
     private router:Router,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public toastController: ToastController
   ) { 
     this.sess_customer_id = localStorage.getItem("sess_cust_id");
   }
@@ -84,12 +85,27 @@ export class CartComponent implements OnInit {
     //console.log('update sendData.........', sendData);
 
     this.data.cartUpdate(sendData).subscribe(
-      res => {
+      async res => {
         if(res.status == true) {
           //console.log('Cart update details.........', res.message);
-          this.showCart();
+          //this.showCart();
+          
+          const toast = await this.toastController.create({
+            message: 'Cart updated.',
+            color: "dark",
+            position: "bottom",
+            duration: 2000
+          });
+          toast.present();
         } else {
           console.log(res.message);
+          const toast = await this.toastController.create({
+            message: 'Error: ' + res.message,
+            color: "dark",
+            position: "bottom",
+            duration: 2000
+          });
+          toast.present();
         }
       });
     
@@ -106,13 +122,21 @@ export class CartComponent implements OnInit {
     });
   }
 
-  addQty(index, type) {
+  async addQty(index, type, min_order) {
     //console.log('index.......', index, type);
     
     if(type == 'm') {
       let qty = parseInt(this.quanty[`qty_${index}`]);
-      if(qty>1) {
+      if(qty > min_order) {
         this.quanty[`qty_${index}`] = qty - 1;
+      } else {
+        const toast = await this.toastController.create({
+          message: 'Minimum order ' + min_order,
+          color: "dark",
+          position: "bottom",
+          duration: 2000
+        });
+        toast.present();
       }
     } else if(type == 'p') {
       let qty = parseInt(this.quanty[`qty_${index}`]);
