@@ -3,21 +3,19 @@
   <ion-grid>
     <ion-row justify-content-center>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <p class="logo-img"><img src="../../assets/images/logo.png" alt="" /></p>
+          <h4>OTP Verification</h4>
+          <hr>
+        </div>
 
-       
-          <div text-center>
-            <p class="logo-img"><img src="../../assets/images/logo.png" alt="" /></p>
-            <h4>OTP Verification</h4>
-            <hr>
-          </div>
-
-          <div padding>
-            <ion-item class="form-group frm">
-              <span><i class="fa fa-user"></i></span>
-              <ion-input type="text" class="info-frm" id="name" placeholder="Select An Agent"></ion-input>
-            </ion-item>
-          </div>
-    
+        <form [formGroup]="otpSendForm" (ngSubmit)="onSubmit()">
+          <ion-item class="form-group frm">
+            <span><i class="fa fa-user"></i></span>
+            <ion-select id="staff_id" class="pad-none brand-drop" formControlName="staff_id" placeholder="Select An Agent">
+              <ion-select-option *ngFor="let staff of me_staffs; let idx = index" [value]="staff.id">{{staff.first_name +' '+ staff.last_name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
     
           <div padding>
             <button type="submit" size="large" expand="block" class="btn sing-btn">RETRIVE OTP</button>
@@ -26,7 +24,7 @@
               <span class="regi"><a href="/register">Register Now</a></span> 
             </p> -->
           </div>
-        
+        </form>
 
       </ion-col>
     </ion-row>

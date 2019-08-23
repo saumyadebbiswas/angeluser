@@ -43,7 +43,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
 
-    if(localStorage.getItem("sess_cust_name") === null || localStorage.getItem("sess_cust_name") === "") {
+    if(localStorage.getItem("sess_login_status") === null || localStorage.getItem("sess_login_status") === "") {
       this.router.navigate(['/signin']);
     }
 
@@ -93,6 +93,7 @@ export class AppComponent {
   }
 
   signOut() {
+    localStorage.setItem("sess_login_status", "");
     localStorage.setItem("sess_cust_id", "");
     localStorage.setItem("sess_cust_name", "");
     localStorage.setItem("sess_cust_phone", "");

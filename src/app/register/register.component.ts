@@ -13,11 +13,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   
   signupForm: FormGroup;
-  name: String;
-  address: String;
-  email: String;
-  phone: String;
-  password: String;
+  name: string;
+  address: string;
+  email: string;
+  phone: string;
+  password: string;
 
   requestHeader: any = new HttpHeaders();
 
@@ -28,9 +28,9 @@ export class RegisterComponent implements OnInit {
     public alertCtrl: AlertController,
     public loadingController: LoadingController
     ) {  
-    if(localStorage.getItem("sess_cust_name") !== null && localStorage.getItem("sess_cust_name") !== "") {
+    if(localStorage.getItem("sess_login_status") == "1") {
       this.router.navigate(['/brands']);
-  }
+    }
 
     this.menuCtrl.enable(false);
     
@@ -57,6 +57,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async onSubmit() {
+    //this.router.navigate(['/otpverify']); 
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
@@ -76,14 +77,37 @@ export class RegisterComponent implements OnInit {
         phone: this.phone,
         password: this.password
       }
+      //console.log('sendData.........', sendData);
 
-      console.log('sendData.........', sendData);
+      this.data.custRegister(sendData).subscribe(
+        async res => {  
+          if(res.status == true) {         
+            //console.log(res);
+
+            localStorage.setItem("sess_login_status", "");
+            localStorage.setItem("sess_cust_id", res.inserted_id);
+            localStorage.setItem("sess_cust_name", this.name);
+            localStorage.setItem("sess_cust_phone", this.phone);
+
+            this.loadingController.dismiss();
+
+            this.router.navigate(['/otpverify']); 
+          } else {
+            this.loadingController.dismiss();
+
+            const alert = await this.alertCtrl.create({
+              header: 'Error!',
+              message: res.message,
+              buttons: ['OK']
+              });
+            alert.present();
+          }          
+      });
 
       this.loadingController.dismiss();
     } else {
       this.loadingController.dismiss();
       
-      //alert("Enter full credentials!");
       const alert = await this.alertCtrl.create({
         header: 'Error!',
         message: 'Enter full credentials!',

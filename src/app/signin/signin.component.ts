@@ -26,9 +26,8 @@ export class SigninComponent implements OnInit {
     public alertCtrl: AlertController,
     public events: Events,
     public loadingController: LoadingController
-  ) 
-  {  
-    if(localStorage.getItem("sess_cust_name") !== null && localStorage.getItem("sess_cust_name") !== "") {
+  ) {  
+    if(localStorage.getItem("sess_login_status") == "1") {
       this.router.navigate(['/brands']);
     }
 
@@ -70,6 +69,7 @@ export class SigninComponent implements OnInit {
           if(res.status == true) {         
             //console.log(res);
 
+            localStorage.setItem("sess_login_status", "1");
             localStorage.setItem("sess_cust_id", res.data.cust_id);
             localStorage.setItem("sess_cust_name", res.data.cust_name);
             localStorage.setItem("sess_cust_phone", res.data.cust_phone);

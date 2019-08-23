@@ -17,6 +17,14 @@ export class DataService {
     return this.http.post<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/customer/login', input, {headers: this.requestHeader})
   }
 
+  custRegister(input:any): Observable<any> {
+    return this.http.post<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/customer/insert', input, {headers: this.requestHeader})
+  }
+
+  marketingStaffList(): Observable<any> {
+    return this.http.get<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/authentication/marketing-staff', {headers: this.requestHeader})
+  }
+
   brandList(): Observable<any> {
     return this.http.get<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/brand/details', {headers: this.requestHeader})
   }
