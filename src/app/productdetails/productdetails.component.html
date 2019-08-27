@@ -13,8 +13,6 @@
   <div class="container">
 
     <div class="row product-box">
-      <img *ngIf="allimages.length == 0" src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/product/{{product.pro_image_name}}" alt="{{product.pro_name}}" />
-      
       <ion-slides *ngIf="allimages.length > 0" pager="true" [options]="slideOptsOne" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
         <ion-slide *ngFor="let image of allimages">
           <img class="slide-image" src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/gallery/{{image}}" alt="" />
@@ -28,12 +26,30 @@
         <p>Colors: {{product.pro_num_of_color}} </p>
         <p>Order Terms</p>
         <p>Minimum Order Quantity {{product.pro_min_order_box_qty}} Boxes</p>
-        <p class="price">₹{{product.pro_price_per_piece}}/Piece | Quantity Per Box: {{product.pro_qty_per_box}} Pieces</p>
+        <p class="price">₹{{product_price}}/Piece | Quantity Per Box: {{product.pro_qty_per_box}} Pieces</p>
+
+        <div class="input-group plus-minus-input">
+          <div *ngIf="check_cart == false" class="input-group-button">
+            <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity" (click)="addQty('m', product.pro_min_order_box_qty)">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <input *ngIf="check_cart == false" class="input-group-field" type="number" [(ngModel)]="quanty" disabled>
+          <input *ngIf="check_cart" class="input-group-field" type="number" [(ngModel)]="quanty" disabled>
+
+          <div *ngIf="check_cart == false" class="input-group-button">
+            <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity" (click)="addQty('p', product.pro_min_order_box_qty)">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <p class="price">Total Price: ₹{{product_price * quanty}}</p>
 
         <div *ngIf="check_cart == false" class="edit" (click)="addToCart(product.pro_price_per_piece, product.pro_min_order_box_qty)">
           <span>Add To Cart</span>
         </div>
-
         <div *ngIf="check_cart" class="edit">
           <span>Already Added To Cart</span>
         </div>

@@ -25,6 +25,10 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+    //this.showCart();
+  }
+
+  ionViewWillEnter() {
     this.showCart();
   }
 
@@ -145,18 +149,26 @@ export class CartComponent implements OnInit {
   }
 
   async placeOrder() {
-    const loading = await this.loadingController.create({
-      message: 'Please wait...'
+    // const loading = await this.loadingController.create({
+    //   message: 'Please wait...'
+    // });
+    // this.presentLoading(loading);
+
+    this.cart.forEach((elem, i) => {
+      this.cart[i].cart_product_qty = this.quanty[`qty_${i}`];
     });
-    this.presentLoading(loading);
 
-    let sendData = {
-      customer_id: this.sess_customer_id,
-      cart_details: this.cart
-    }
-    //console.log('cart sendData..........', sendData);
+    localStorage.setItem("sess_cart_item", JSON.stringify(this.cart));
 
-    this.data.OrderInsert(sendData).subscribe(
+    this.router.navigate(['/checkout']);
+
+    // let sendData = {
+    //   customer_id: this.sess_customer_id,
+    //   cart_details: this.cart
+    // }
+    // console.log('cart sendData..........', sendData);
+
+    /*this.data.OrderInsert(sendData).subscribe(
       res => {
         if(res.status == true) {
           this.router.navigate(['/brands']);
@@ -164,9 +176,9 @@ export class CartComponent implements OnInit {
         } else {
           console.log(res.message);
         }
-      });
+      });*/
     
-    this.hideLoader();
+    // this.hideLoader();
   }
 
 }

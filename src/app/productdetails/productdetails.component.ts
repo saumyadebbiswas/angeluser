@@ -50,6 +50,8 @@ export class ProductdetailsComponent implements OnInit {
   allimages:any = [];
 
   check_cart: any = false;
+  quanty:string;
+  product_price:any;
 
   constructor(
     private route:ActivatedRoute, 
@@ -65,7 +67,6 @@ export class ProductdetailsComponent implements OnInit {
     this.product_id = this.route.snapshot.paramMap.get('id');
 
     this.showProduct();
-    this.checkCart();
   }
 
   async showProduct() {
@@ -82,6 +83,8 @@ export class ProductdetailsComponent implements OnInit {
       res => {
         if(res.status == true) {
           this.product = res.data;
+          this.quanty = res.data.pro_min_order_box_qty;
+          this.product_price = res.data.pro_price_per_piece;
 
           let productimages = res.data.productimages;
           if(productimages.length > 0) {
@@ -95,12 +98,34 @@ export class ProductdetailsComponent implements OnInit {
           console.log("No response");
         }
       });
+          
+    this.checkCart();
 
     this.loadingController.dismiss();
   }
 
   async presentLoading(loading) {
 		return await loading.present();
+  }
+
+  async addQty(type, min_order) {
+    if(type == 'm') {
+      let qty = parseInt(this.quanty);
+      if(qty > min_order) {
+        this.quanty = String(qty - 1);
+      } else {
+        const toast = await this.toastController.create({
+          message: 'Minimum order ' + min_order,
+          color: "dark",
+          position: "bottom",
+          duration: 2000
+        });
+        toast.present();
+      }
+    } else if(type == 'p') {
+      let qty = parseInt(this.quanty);
+      this.quanty = String(qty + 1);
+    }
   }
 
   checkCart() {
@@ -113,8 +138,8 @@ export class ProductdetailsComponent implements OnInit {
     this.data.cartCheck(sendData).subscribe(
       async res => {  
         if(res.status == true) {
-          //console.log(res);
           this.check_cart = true;
+          this.quanty = res.data[0].cart_product_qty;
         } else {
           console.log(res.message);
         }          
@@ -127,7 +152,7 @@ export class ProductdetailsComponent implements OnInit {
       product_id: this.product_id,
       product_old_price: product_price,
       min_order_old: min_order,
-      product_qty: min_order
+      product_qty: this.quanty
     }
     //console.log('add cart sendData........', sendData);
 

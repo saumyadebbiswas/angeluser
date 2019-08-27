@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'enquiry', component: EnquiryComponent },
   { path: 'thankyou', component: ThankyouComponent },
   { path: 'editprofile', component: EditprofileComponent },
-  { path: 'settings', component: SettingsComponent }
+  { path: 'settings', component: SettingsComponent },
+  { path: 'checkout', component: CheckoutComponent }
   
 ];
 

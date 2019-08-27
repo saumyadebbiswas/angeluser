@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Checkout
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+        <form  [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+          <div padding class="profile-box">
+            <h4>Total Amount: ₹{{total_amount}}</h4>
+            <p>Total Items: {{total_item}} Pieces</p>
+
+            <p><b>Please Enter Your Delivery Address</b></p>
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-user"></i></span>
+              <ion-input type="text" formControlName="name" class="info-frm" id="Name" placeholder="Your Name"></ion-input>
+            </ion-item>
+
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-envelope"></i></span>
+              <ion-input type="text" formControlName="email" class="info-frm" id="email" placeholder="Email ID"></ion-input>
+            </ion-item>
+
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-phone "></i></span>
+              <ion-input type="text" formControlName="phone" class="info-frm" id="phone" placeholder="Phone Number" ></ion-input>
+            </ion-item>
+    
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-home"></i></span>
+              <ion-input type="text" formControlName="address" class="info-frm" id="address" placeholder="Address Line1" ></ion-input>
+            </ion-item>
+            
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-home"></i></span>
+              <ion-input type="text" formControlName="address2" class="info-frm" id="address" placeholder="Address Line2" ></ion-input>
+            </ion-item>
+            
+            <div class="frm-part">
+              <ion-item class="form-group frm">
+                <span><i class="fa fa-map-marker"></i></span>
+                <ion-input type="text" formControlName="city" class="info-frm" id="city" placeholder="City" ></ion-input>
+              </ion-item>
+              
+              <ion-item class="form-group frm">
+                <span><i class="fa fa-venus"></i></span>
+                <ion-input type="text" formControlName="pin" class="info-frm" id="Pin" placeholder="Pin" ></ion-input>
+              </ion-item>
+            </div>
+
+            <ion-item class="form-group frm">
+              <span><i class="fa fa-venus"></i></span>
+              <ion-input type="text" formControlName="state" class="info-frm" id="state" placeholder="State" ></ion-input>
+            </ion-item>
+
+            <div class="frm-part2">
+              <h4>Payment Method</h4>
+              <div class="custom-control custom-checkbox custom-control-inline box">
+                <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="1" (click)="radioChecked('1')" checked>
+                <label class="custom-control-label" for="customRadio">Credit</label>
+              </div>
+                
+              <!-- Default inline 2-->
+              <div class="custom-control custom-checkbox custom-control-inline box">
+                <input type="radio" class="custom-control-input" id="customRadio2" name="example1" value="2" (click)="radioChecked('2')">
+                <label class="custom-control-label" for="customRadio2">Cash</label>
+              </div>
+            </div>
+
+            <div class="box" *ngIf="payment_type == 2">
+              <h5>Account Details</h5>
+              <p>
+                <strong>Name: Mr. Unknown</strong><br>
+                A/C No: 000000000<br>
+                IFSC code: IFS0000C
+              </p>
+            </div>
+          </div>
+    
+          <div padding>
+            <button type="submit" size="large" expand="block" class="btn sing-btn">CONFIRM ORDER</button>
+          </div>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

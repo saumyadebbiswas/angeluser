@@ -97,6 +97,7 @@ export class AppComponent {
     localStorage.setItem("sess_cust_id", "");
     localStorage.setItem("sess_cust_name", "");
     localStorage.setItem("sess_cust_phone", "");
+    localStorage.setItem("sess_cart_item", "");
 
     this.menuCtrl.close();
     this.menuCtrl.enable(false);

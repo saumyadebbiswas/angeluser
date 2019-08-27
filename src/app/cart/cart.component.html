@@ -17,13 +17,13 @@
       <div class="col-7 product-description">
         <h4>{{cartitem.pro_name}}</h4>
         <p>{{cartitem.pro_description | slice:0:60}}...</p>
-        <!--<p>Date: 25 Dec 2018, 12:09 PM</p>-->
         <p>Date: {{cartitem.cart_created | date: "MMM dd, yyyy hh:mm a"}}</p>
-        <p>₹{{cartitem.cart_product_old_price}}/Piece</p>
+        <p>₹{{cartitem.pro_price_per_piece}}/Piece</p>
+        <p>Total: ₹{{quanty['qty_'+i] * cartitem.pro_price_per_piece}}</p>
       </div>
 
       <div class="col-5 detail-area">
-        <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/product/{{cartitem.pro_image_name}}" alt="{{cartitem.pro_name}}" />
+        <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/gallery/{{cartitem.pro_image_name}}" alt="{{cartitem.pro_name}}" />
         <!-- <a href="/product">Details</a> -->
         <!-- <div class="dropdown">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -46,7 +46,7 @@
           </div>
 
           <!-- <input class="input-group-field" type="number" name="quantity_{{i}}" value="{{cartitem.cart_product_qty}}"> -->
-          <input class="input-group-field" type="number" [(ngModel)]="quanty['qty_'+i]">
+          <input class="input-group-field" type="number" [(ngModel)]="quanty['qty_'+i]" disabled>
 
 
           <div class="input-group-button">

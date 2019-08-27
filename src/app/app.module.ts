@@ -23,6 +23,7 @@ import { CartComponent } from './cart/cart.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CategoriesComponent } from './categories/categories.component';
     ThankyouComponent,
     EditprofileComponent,
     CartComponent,
-    SettingsComponent
+    SettingsComponent,
+    CheckoutComponent
   ],
   entryComponents: [],
   imports: [
