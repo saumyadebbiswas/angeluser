@@ -20,10 +20,21 @@
 // }
 
 // ---------end manu css-----------
+
+.fixed-page{
+    object-fit: cover!important;
+}
+.fixed-page::-webkit-scrollbar { 
+    display: none!important; 
+} 
+.fixed-page::-webkit-scrollbar {
+     width: 0 !important 
+    }
+
 .logo-img img{
     width: 50%;
     margin: 35px auto;
-
+    margin-top: 25px;
 }
 
 hr {

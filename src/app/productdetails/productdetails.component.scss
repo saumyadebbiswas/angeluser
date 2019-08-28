@@ -13,6 +13,9 @@
     color: #ff8a65;
 }
 
+.total-rate{
+  color: #000000;
+}
 .edit{
     background: #ff8a65;
     width: 100%;
@@ -31,13 +34,15 @@
 .plus-minus-input {
     align-items: center;
     width: 100%;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
   
     .input-group-field {
         text-align: center;
         margin-left: 0rem;
         margin-right: 0rem;
         padding: 0.1rem;
-        width: 38%;
+        width: 25%;
   
       &::-webkit-inner-spin-button,
       ::-webkit-outer-spin-button {

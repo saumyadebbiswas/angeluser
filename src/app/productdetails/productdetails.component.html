@@ -27,7 +27,7 @@
         <p>Order Terms</p>
         <p>Minimum Order Quantity {{product.pro_min_order_box_qty}} Boxes</p>
         <p class="price">₹{{product_price}}/Piece | Quantity Per Box: {{product.pro_qty_per_box}} Pieces</p>
-
+        <h6>Total Quantity</h6>
         <div class="input-group plus-minus-input">
           <div *ngIf="check_cart == false" class="input-group-button">
             <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity" (click)="addQty('m', product.pro_min_order_box_qty)">
@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <p class="price">Total Price: ₹{{product_price * quanty}}</p>
+        <h5 class="price"><span class="total-rate">Total Price:</span>  ₹{{product_price * quanty}}</h5>
 
         <div *ngIf="check_cart == false" class="edit" (click)="addToCart(product.pro_price_per_piece, product.pro_min_order_box_qty)">
           <span>Add To Cart</span>

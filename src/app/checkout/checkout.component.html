@@ -16,8 +16,8 @@
 
         <form  [formGroup]="customerForm" (ngSubmit)="onSubmit()">
           <div padding class="profile-box">
-            <h4>Total Amount: ₹{{total_amount}}</h4>
-            <p>Total Items: {{total_item}} Pieces</p>
+            <h5>Total Amount: <span class="price">₹{{total_amount}}</span></h5>
+            <h5>Total Items: <span class="price">{{total_item}} Pieces</span></h5>
 
             <p><b>Please Enter Your Delivery Address</b></p>
             <ion-item class="form-group frm">
@@ -64,13 +64,13 @@
 
             <div class="frm-part2">
               <h4>Payment Method</h4>
-              <div class="custom-control custom-checkbox custom-control-inline box">
+              <div class="custom-control custom-radio custom-control-inline pay-box">
                 <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="1" (click)="radioChecked('1')" checked>
                 <label class="custom-control-label" for="customRadio">Credit</label>
               </div>
                 
               <!-- Default inline 2-->
-              <div class="custom-control custom-checkbox custom-control-inline box">
+              <div class="custom-control custom-radio custom-control-inline pay-box">
                 <input type="radio" class="custom-control-input" id="customRadio2" name="example1" value="2" (click)="radioChecked('2')">
                 <label class="custom-control-label" for="customRadio2">Cash</label>
               </div>
