@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="my-toolbar">
     <ion-buttons slot="start">
-      <ion-menu-button color="light"></ion-menu-button>
+      <ion-menu-button class="manu-bar"></ion-menu-button>
     </ion-buttons>
     <ion-title color="light">
       Enquiries
@@ -11,50 +11,31 @@
 
 <ion-content>
   <div class="container">
-    <div class="row product-box">
+    <ion-item class="form-group frm">
+      <ion-select class="pad-none brand-drop" (ionChange)="onChange($event)" placeholder="Status Type">
+          <ion-select-option [value]="-1" selected="true">All</ion-select-option>
+          <ion-select-option [value]="1">Pending</ion-select-option>
+          <ion-select-option [value]="2">Processing</ion-select-option>
+          <ion-select-option [value]="3">Delivered</ion-select-option>
+        <ion-select-option [value]="0">Cancelled</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="row product-box" *ngFor="let order of orders">
 
       <div class="col-9 product-description">
-        <h4>Design Id: ABC1234</h4>
-        <p>Date: 25 Dec 2018, 12:09 PM</p>
-        <p>Status: Complete</p>
+        <h4>Order ID: {{order.order_id}}</h4>
+        <p>Date: {{order.order_created | date: "MMM dd, yyyy hh:mm a"}}</p>
+        <p *ngIf="order.order_status == 0">Status: Cancelled</p>
+        <p *ngIf="order.order_status == 1">Status: Pending</p>
+        <p *ngIf="order.order_status == 2">Status: Processing</p>
+        <p *ngIf="order.order_status == 3">Status: Delivered</p>
       </div>
 
-      <div class="col-3 detail-btn">
-        <a href="/product">Details</a>
+      <div class="col-3 detail-btn" (click)="moveOrderDetails(order.order_id)">
+        <span>Details</span>
       </div>
 
     </div>
-
-    <div class="row product-box">
-
-      <div class="col-9 product-description">
-        <h4>Design Id: ABC1233</h4>
-        <p>Date: 20 Nov 2018, 10:04 AM</p>
-        <p>Status: Cancelled</p>
-      </div>
-
-      <div class="col-3 detail-btn">
-        <a href="/product">Details</a>
-      </div>
-
-    </div>
-
-
-    <div class="row product-box">
-
-      <div class="col-9 product-description">
-        <h4>Design Id: ABC1233</h4>
-        <p>Date: 20 Nov 2018, 10:04 AM</p>
-        <p>Status: Cancelled</p>
-      </div>
-
-      <div class="col-3 detail-btn">
-        <a href="/product">Details</a>
-      </div>
-
-    </div>
-
-
-    <!-- <span class="add-btn"><a href="#">+</a></span> -->
   </div>
 </ion-content>

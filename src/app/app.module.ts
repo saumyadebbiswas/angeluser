@@ -24,6 +24,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     EditprofileComponent,
     CartComponent,
     SettingsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderdetailsComponent
   ],
   entryComponents: [],
   imports: [

@@ -18,8 +18,10 @@
         <h4>{{cartitem.pro_name}}</h4>
         <p>{{cartitem.pro_description | slice:0:60}}...</p>
         <p>Date: {{cartitem.cart_created | date: "MMM dd, yyyy hh:mm a"}}</p>
-        <p>₹{{cartitem.pro_price_per_piece}}/Piece</p>
-        <p>Total: ₹{{quanty['qty_'+i] * cartitem.pro_price_per_piece}}</p>
+        <!-- <p>₹{{cartitem.pro_price_per_piece}}/Piece</p>
+        <p>Total: ₹{{quanty['qty_'+i] * cartitem.pro_qty_per_box * cartitem.pro_price_per_piece}}</p> -->
+        <p>{{cartitem.pro_price_per_piece | currency:'INR':true:'1.2-2'}}/Piece</p>
+        <p>Total: {{quanty['qty_'+i] * cartitem.pro_qty_per_box * cartitem.pro_price_per_piece | currency:'INR':true:'1.2-2'}}</p>
       </div>
 
       <div class="col-5 detail-area">

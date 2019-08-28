@@ -14,6 +14,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'thankyou', component: ThankyouComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'checkout', component: CheckoutComponent }
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'enquiries/:id', component: OrderdetailsComponent }
   
 ];
 

@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
       res => {
         if(res.status == true) {
           this.cart = res.data;
-          //console.log('Cart show details.........', this.cart);
+          console.log('Cart show details.........', this.cart);
 
           this.cart.forEach((elem, i) => {
             this.quanty[`qty_${i}`] = elem.cart_product_qty;

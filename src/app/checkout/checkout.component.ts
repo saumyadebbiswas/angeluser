@@ -42,7 +42,7 @@ export class CheckoutComponent implements OnInit {
     let amount = 0;
     let items = 0;
     this.cart.forEach(element => {
-      amount += (element.cart_product_qty * element.pro_price_per_piece);
+      amount += (element.cart_product_qty * element.pro_qty_per_box * element.pro_price_per_piece);
       items += parseInt(element.cart_product_qty);
     });
 

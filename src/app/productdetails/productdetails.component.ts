@@ -52,6 +52,7 @@ export class ProductdetailsComponent implements OnInit {
   check_cart: any = false;
   quanty:string;
   product_price:any;
+  qty_per_box:any;
 
   constructor(
     private route:ActivatedRoute, 
@@ -84,6 +85,7 @@ export class ProductdetailsComponent implements OnInit {
         if(res.status == true) {
           this.product = res.data;
           this.quanty = res.data.pro_min_order_box_qty;
+          this.qty_per_box = res.data.pro_qty_per_box;
           this.product_price = res.data.pro_price_per_piece;
 
           let productimages = res.data.productimages;
@@ -92,14 +94,15 @@ export class ProductdetailsComponent implements OnInit {
               this.allimages.push(element.proimg_image_name);
             });
           }
+
+          this.checkCart();
           //console.log('product.............', this.product);
         } else {
+          this.checkCart();
           //this.product = res.message;
           console.log("No response");
         }
       });
-          
-    this.checkCart();
 
     this.loadingController.dismiss();
   }

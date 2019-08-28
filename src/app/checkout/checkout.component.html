@@ -16,7 +16,7 @@
 
         <form  [formGroup]="customerForm" (ngSubmit)="onSubmit()">
           <div padding class="profile-box">
-            <h5>Total Amount: <span class="price">₹{{total_amount}}</span></h5>
+            <h5>Total Amount: <span class="price">{{total_amount | currency:'INR':true:'1.2-2'}}</span></h5>
             <h5>Total Items: <span class="price">{{total_item}} Pieces</span></h5>
 
             <p><b>Please Enter Your Delivery Address</b></p>
@@ -76,7 +76,7 @@
               </div>
             </div>
 
-            <div class="box" *ngIf="payment_type == 2">
+            <div class="box" *ngIf="payment_type == 1">
               <h5>Account Details</h5>
               <p>
                 <strong>Name: Mr. Unknown</strong><br>

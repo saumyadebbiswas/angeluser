@@ -1,0 +1,159 @@
+.product-box{
+    margin-top: 16px;
+    border-bottom: 1px solid #ddd;
+    //padding-bottom: 15px;
+}
+.product-img{
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+.product-description h4{
+    font-size: 17px;
+    padding-top: 0;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.price-details{
+    display: flex;
+}
+
+.qty-price{
+    padding-right: 0.8rem!important;
+}
+
+.product-description p{
+    font-size: 0.8rem;
+    font-weight: normal;
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 2px;
+}
+
+.product-description p span{
+    color: #ff8a65;
+    padding-left: 0.6rem;
+}
+
+.detail-btn p span{
+    color: #ff8a65;
+    padding-left: 0.6rem;
+}
+
+.detail-btn{
+    text-align: center;
+}
+
+.detail-btn img{
+    width: 100%;
+    height: 65px;
+    margin-bottom: 12px;
+}
+
+.qty{
+    color: #000!important;
+    border: 1px solid #000!important;
+   
+}
+
+.cart-btn{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.sing-btn{
+    background: #ff8a65 !important;
+    color: #fff;
+    width: 100%;
+    padding: 0.4rem 0;
+    margin: 1%;
+}
+
+.plus-minus-input {
+    align-items: center;
+    width: 100%;
+  
+    .input-group-field {
+        text-align: center;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        padding: 0.1rem;
+        width: 38%;
+  
+      &::-webkit-inner-spin-button,
+      ::-webkit-outer-spin-button {
+        appearance: none;
+      }
+    }
+  
+    .input-group-button {
+      .circle {
+        border-radius: 50%;
+        padding: 0.25em 0.8em;
+        color: #ff8a65;
+      }
+    }
+  }
+  
+  .total-price {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .select-product-row{
+      display: flex;
+  }
+  
+.frm{
+    margin-bottom: 0.1rem!important;
+}
+.frm .item-inner{
+    border-bottom: 2px solid #180d52!important;
+    // padding-left: 10px;
+}
+.pad-none{
+    padding: 0;
+}
+
+  .edit-btn{
+      background: #ff8a65!important;
+      color: #fff;
+      width: 100%;
+      padding: 0.4rem 0;
+      margin-top: 19px;
+  }
+  .price{
+      color: #ff8a65;
+  }
+
+  .ex-bor{
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+  }
+
+  .item-inner{
+      border: none!important;
+  }
+  
+  .cancel-btn{
+      background: #31959c!important;
+      color: #fff;
+      width: 100%;
+      padding: 0.4rem 0;
+  }
+
+  .profile-box h4{
+      margin-top: 0!important;
+  }
+  
+  .profile-box p{
+      font-size: 14px!important;
+      
+  }
+  

@@ -26,7 +26,7 @@
         <p>Colors: {{product.pro_num_of_color}} </p>
         <p>Order Terms</p>
         <p>Minimum Order Quantity {{product.pro_min_order_box_qty}} Boxes</p>
-        <p class="price">₹{{product_price}}/Piece | Quantity Per Box: {{product.pro_qty_per_box}} Pieces</p>
+        <p class="price">{{product_price | currency:'INR':true:'1.2-2'}}/Piece | Quantity Per Box: {{product.pro_qty_per_box}} Pieces</p>
         <h6>Total Quantity</h6>
         <div class="input-group plus-minus-input">
           <div *ngIf="check_cart == false" class="input-group-button">
@@ -45,7 +45,8 @@
           </div>
         </div>
 
-        <h5 class="price"><span class="total-rate">Total Price:</span>  ₹{{product_price * quanty}}</h5>
+        <!-- <h5 class="price"><span class="total-rate">Total Price:</span>  ₹{{product_price * qty_per_box* quanty}}</h5> -->
+        <h5 class="price"><span class="total-rate">Total Price:</span>  {{product_price * qty_per_box* quanty | currency:'INR':true:'1.2-2'}}</h5>
 
         <div *ngIf="check_cart == false" class="edit" (click)="addToCart(product.pro_price_per_piece, product.pro_min_order_box_qty)">
           <span>Add To Cart</span>
