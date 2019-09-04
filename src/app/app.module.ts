@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -52,11 +55,14 @@ import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    ImagePicker,
+    DatePicker,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

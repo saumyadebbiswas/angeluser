@@ -12,10 +12,11 @@ import { DataService } from '../data.service';
 })
 export class OtpverifyComponent implements OnInit {
   
+  sess_customer_id:String;
   me_staffs:any = [];
   
   otpSendForm: FormGroup;
-  staff_id:string;
+  staff_phone:string;
   
   requestHeader: any = new HttpHeaders();
 
@@ -30,6 +31,8 @@ export class OtpverifyComponent implements OnInit {
       this.router.navigate(['/brands']);
     }
 
+    this.sess_customer_id = localStorage.getItem("sess_cust_id");
+
     this.menuCtrl.enable(false);
     
     //this.requestHeader.append("Accept", 'application/json');
@@ -38,7 +41,7 @@ export class OtpverifyComponent implements OnInit {
 
   ngOnInit() {
     this.otpSendForm = new FormGroup({
-      staff_id: new FormControl()
+      staff_phone: new FormControl()
     });
 
     this.showMEStaff();
@@ -49,7 +52,7 @@ export class OtpverifyComponent implements OnInit {
       res => {
         if(res.status == true) {
           this.me_staffs = res.data;
-          //console.log(this.brand);
+          console.log(this.me_staffs);
         } else {
           console.log("No response");
         }
@@ -62,17 +65,33 @@ export class OtpverifyComponent implements OnInit {
     });
     this.presentLoading(loading);
 
-    this.staff_id = this.otpSendForm.get('staff_id').value;
+    this.staff_phone = this.otpSendForm.get('staff_phone').value;
 
-    if(this.staff_id != null && this.staff_id != "") {
+    if(this.staff_phone != null && this.staff_phone != "") {
       let sendData = {
-        staff_id: this.staff_id
+        customer_id: this.sess_customer_id,
+        staff_phone: this.staff_phone
       }
       //console.log('sendData.........', sendData);
 
-      this.router.navigate(['/otpnextpart']); 
+      this.data.custOtpSend(sendData).subscribe(
+        async res => {  
+          console.log('otp data.....', res);
+          
+          if(res.status == true) {
+            this.loadingController.dismiss();
+            this.router.navigate(['/otpnextpart']);
+          } else {
+            this.loadingController.dismiss();
 
-      this.loadingController.dismiss();
+            const alert = await this.alertCtrl.create({
+              header: 'Error!',
+              message: 'Error to send message. Try again.',
+              buttons: ['OK']
+              });
+            alert.present();
+          }          
+      });
     } else {
       this.loadingController.dismiss();
       

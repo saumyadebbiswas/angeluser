@@ -103,8 +103,6 @@ export class RegisterComponent implements OnInit {
             alert.present();
           }          
       });
-
-      this.loadingController.dismiss();
     } else {
       this.loadingController.dismiss();
       
@@ -114,7 +112,7 @@ export class RegisterComponent implements OnInit {
         buttons: ['OK']
         });
       alert.present();
-    }
+    } 
     
   }
 

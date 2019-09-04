@@ -21,6 +21,14 @@ export class DataService {
     return this.http.post<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/customer/insert', input, {headers: this.requestHeader})
   }
 
+  custOtpSend(input:any): Observable<any> {
+    return this.http.put<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/customer/otpSend', input, {headers: this.requestHeader})
+  }
+
+  custOtpCheck(input:any): Observable<any> {
+    return this.http.put<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/customer/otpCheck', input, {headers: this.requestHeader})
+  }
+
   marketingStaffList(): Observable<any> {
     return this.http.get<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/authentication/marketing-staff', {headers: this.requestHeader})
   }
@@ -83,5 +91,9 @@ export class DataService {
 
   orderItemList(input:any): Observable<any> {
     return this.http.get<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/orders/all-items/'+input.order_id, {headers: this.requestHeader})
+  }
+
+  profileEdit(input:any): Observable<any> {
+    return this.http.put<any>('http://phpstack-304562-945735.cloudwaysapps.com/crm/api/customer/edit', input, {headers: this.requestHeader})
   }
 }

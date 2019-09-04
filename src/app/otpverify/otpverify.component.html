@@ -12,8 +12,8 @@
         <form [formGroup]="otpSendForm" (ngSubmit)="onSubmit()">
           <ion-item class="form-group frm">
             <span><i class="fa fa-user"></i></span>
-            <ion-select id="staff_id" class="pad-none brand-drop" formControlName="staff_id" placeholder="Select An Agent">
-              <ion-select-option *ngFor="let staff of me_staffs; let idx = index" [value]="staff.id">{{staff.first_name +' '+ staff.last_name}}</ion-select-option>
+            <ion-select id="staff_id" class="pad-none brand-drop" formControlName="staff_phone" placeholder="Select An Agent">
+              <ion-select-option *ngFor="let staff of me_staffs; let idx = index" [value]="staff.phone">{{staff.first_name +' '+ staff.last_name}}</ion-select-option>
             </ion-select>
           </ion-item>
     
