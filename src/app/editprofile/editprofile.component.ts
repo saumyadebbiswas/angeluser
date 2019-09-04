@@ -25,6 +25,7 @@ export class EditprofileComponent implements OnInit {
   city: string;
   birthday: string;
   image_name: any;
+  image_name_old: string;
   image_path: string = "http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/profile/";
 
   imageResponse:any = [];
@@ -77,6 +78,7 @@ export class EditprofileComponent implements OnInit {
           this.customer_name = res.data.cust_name;
           this.customer_city = res.data.cust_city;
           this.image_name = res.data.cust_image_name;
+          this.image_name_old = res.data.cust_image_name;
 
           this.customerForm.patchValue({
             name:res.data.cust_name,
@@ -139,7 +141,7 @@ export class EditprofileComponent implements OnInit {
         phone: this.phone.trim(),
         city: this.city.trim(),
         birthday: this.birthday,
-        image_name: this.image_name,
+        image_name: this.image_name_old,
         imagefile: this.imageResponse[0]
       }
       console.log(sendData);
