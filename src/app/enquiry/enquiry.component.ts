@@ -65,4 +65,8 @@ export class EnquiryComponent implements OnInit {
     this.router.navigate(['/enquiries/'+order_id]);
   }
 
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
+
 }

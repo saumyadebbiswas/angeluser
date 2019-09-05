@@ -40,4 +40,8 @@ export class BrandsComponent implements OnInit {
     this.router.navigate(['/categories/'+brand_id]);
   }
 
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
+
 }

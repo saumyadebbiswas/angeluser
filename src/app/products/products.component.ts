@@ -101,4 +101,8 @@ export class ProductsComponent implements OnInit {
       this.products = this.products_fixed;
     }
   }
+
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
 }

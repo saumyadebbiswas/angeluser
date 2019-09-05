@@ -172,4 +172,8 @@ export class EditprofileComponent implements OnInit {
     }
   }
 
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
+
 }

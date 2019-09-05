@@ -181,4 +181,8 @@ export class CartComponent implements OnInit {
     // this.hideLoader();
   }
 
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
+
 }

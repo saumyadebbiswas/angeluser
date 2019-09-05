@@ -5,6 +5,7 @@
     </ion-buttons>
     <ion-title color="light">
       Product Details
+      <span style="float: right;" (click)="moveCart()"><i class="fa fa-shopping-cart"></i></span>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -27,7 +28,7 @@
         <p>Order Terms</p>
         <p>Minimum Order Quantity {{product.pro_min_order_box_qty}} Boxes</p>
         <p class="price">{{product_price | currency:'INR':true:'1.2-2'}}/Piece | Quantity Per Box: {{product.pro_qty_per_box}} Pieces</p>
-        <h6>Total Quantity</h6>
+        <h6>Total Quantity (Box)</h6>
         <div class="input-group plus-minus-input">
           <div *ngIf="check_cart == false" class="input-group-button">
             <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity" (click)="addQty('m', product.pro_min_order_box_qty)">

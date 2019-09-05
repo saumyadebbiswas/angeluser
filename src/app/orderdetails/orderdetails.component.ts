@@ -72,4 +72,8 @@ export class OrderdetailsComponent implements OnInit {
     return await loading.present();
   }
 
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
+
 }

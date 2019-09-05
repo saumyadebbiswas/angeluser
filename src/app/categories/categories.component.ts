@@ -47,4 +47,8 @@ export class CategoriesComponent implements OnInit {
       this.router.navigate(['/products/cat_'+category_id]);
   }
 
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
+
 }

@@ -159,4 +159,8 @@ export class CheckoutComponent implements OnInit {
 		return await loading.present();
   }
 
+  moveCart() {
+    this.router.navigate(['/cart']);
+  }
+
 }

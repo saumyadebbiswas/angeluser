@@ -57,6 +57,7 @@ export class ProductdetailsComponent implements OnInit {
   constructor(
     private route:ActivatedRoute, 
     private data:DataService,
+    private router: Router, 
     public alertCtrl: AlertController,
     public loadingController: LoadingController,
     public toastController: ToastController
@@ -181,6 +182,10 @@ export class ProductdetailsComponent implements OnInit {
           alert.present();
         }          
     });
+  }
+
+  moveCart() {
+    this.router.navigate(['/cart']);
   }
 
 }
