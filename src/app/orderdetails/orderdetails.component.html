@@ -40,10 +40,11 @@
             <strong>Price:</strong> <span>{{order_item.oi_old_price | currency:'INR':true:'1.2-2'}}/Piece</span>
           </p>
         </div>
-      </div>
+      </div> 
 
       <div class="col-4 detail-btn">
-        <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/gallery/{{order_item.pro_image_name}}" alt="{{order_item.pro_name}}" />
+        <img *ngIf="order_item.pro_image_name != null" src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/gallery/{{order_item.pro_image_name}}" alt="{{order_item.pro_name}}" />
+        <img *ngIf="order_item.pro_image_name == null" src="../../assets/images/no-image.jpeg" alt="{{order_item.pro_name}}" />
         <p class="total-price">
           <strong>Total Price:</strong> <span>{{order_item.oi_quantity * order_item.pro_qty_per_box * order_item.oi_old_price | currency:'INR':true:'1.2-2'}}</span>
         </p>

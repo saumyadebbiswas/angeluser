@@ -16,8 +16,8 @@ export class SigninComponent implements OnInit {
   signinForm: FormGroup;
   phone: String;
   password: String;
-
   requestHeader: any = new HttpHeaders();
+  subscription:any;
 
   constructor(
     public menuCtrl: MenuController,
@@ -25,16 +25,26 @@ export class SigninComponent implements OnInit {
     private data: DataService, 
     public alertCtrl: AlertController,
     public events: Events,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private platform: Platform
   ) {  
+    this.menuCtrl.enable(false);
+  }
+
+  ionViewWillEnter(){ 
     if(localStorage.getItem("sess_login_status") == "1") {
       this.router.navigate(['/brands']);
     }
+  }
 
-    this.menuCtrl.enable(false);
+  ionViewDidEnter(){ 
+    this.subscription = this.platform.backButton.subscribe(()=>{ 
+      navigator['app'].exitApp(); 
+    }); 
+  } 
 
-    //this.requestHeader.append("Accept", 'application/json');
-    this.requestHeader.append('Content-Type', 'application/json'); 
+  ionViewWillLeave(){ 
+    this.subscription.unsubscribe();
   }
 
   ngOnInit() {

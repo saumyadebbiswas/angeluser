@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-brands',
@@ -11,17 +11,36 @@ import { MenuController } from '@ionic/angular';
 export class BrandsComponent implements OnInit {
 
   brands: any = [];
+  subscription:any;
 
   constructor(
     public menuCtrl: MenuController,
     private router: Router, 
-    private data: DataService
+    private data: DataService,
+    private platform: Platform
   ) { 
     this.menuCtrl.enable(true);
   }
 
   ngOnInit() {
     this.showBrands();
+  }
+
+  ionViewWillEnter(){ 
+    if(localStorage.getItem("sess_login_status") != "1") {
+      this.menuCtrl.enable(false);
+      this.router.navigate(['/signin']);
+    }
+  }
+
+  ionViewDidEnter(){ 
+    this.subscription = this.platform.backButton.subscribe(()=>{ 
+      navigator['app'].exitApp(); 
+    }); 
+  } 
+
+  ionViewWillLeave(){ 
+    this.subscription.unsubscribe();
   }
 
   showBrands() {

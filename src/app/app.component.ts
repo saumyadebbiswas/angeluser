@@ -47,21 +47,16 @@ export class AppComponent {
       this.router.navigate(['/signin']);
     }
 
+    this.sess_cust_name = localStorage.getItem("sess_cust_name");
+    this.sess_cust_phone = localStorage.getItem("sess_cust_phone");
+
     events.subscribe('userLogin', (data) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
-      console.log('event data :.............', data);
-      this.getlocalvalue();
+      this.sess_cust_name = localStorage.getItem("sess_cust_name");
+      this.sess_cust_phone = localStorage.getItem("sess_cust_phone");
     });
     
     
-  }
-
-  getlocalvalue(){
-    // setTimeout(() => {
-      this.sess_cust_name = localStorage.getItem("sess_cust_name");
-      this.sess_cust_phone = localStorage.getItem("sess_cust_phone");
-    // }, 1000);
-    console.log('get local value called..................');    
   }
 
   initializeApp() {
