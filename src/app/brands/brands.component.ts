@@ -10,6 +10,8 @@ import { MenuController, Platform } from '@ionic/angular';
 })
 export class BrandsComponent implements OnInit {
 
+  sess_customer_id:String;
+  cart_number:number = 0;
   brands: any = [];
   subscription:any;
 
@@ -30,6 +32,9 @@ export class BrandsComponent implements OnInit {
     if(localStorage.getItem("sess_login_status") != "1") {
       this.menuCtrl.enable(false);
       this.router.navigate(['/signin']);
+    } else {
+      this.sess_customer_id = localStorage.getItem("sess_cust_id");
+      this.showCart();
     }
   }
 
@@ -48,7 +53,7 @@ export class BrandsComponent implements OnInit {
       res => {
         if(res.status == true){
           this.brands = res.data;
-          console.log(this.brands);
+          //console.log(this.brands);
         } else {
           console.log("No response");
         }
@@ -57,6 +62,19 @@ export class BrandsComponent implements OnInit {
 
   moveCategory(brand_id) {
     this.router.navigate(['/categories/'+brand_id]);
+  }
+
+  showCart() {
+    let sendData = {
+      customer_id: this.sess_customer_id
+    }
+
+    this.data.cartDetails(sendData).subscribe(
+      res => {
+        if(res.status == true) {
+          this.cart_number = res.data.length;
+        }
+      });
   }
 
   moveCart() {

@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
 
+  sess_customer_id:String;
+  cart_number:number = 0;
   brand_id: string;
   categories: any = [];
 
@@ -16,12 +18,15 @@ export class CategoriesComponent implements OnInit {
     private data: DataService,
     private route:ActivatedRoute,
     private router:Router
-  ) { }
+  ) {
+    this.sess_customer_id = localStorage.getItem("sess_cust_id");
+  }
 
   ngOnInit() {
     this.brand_id = this.route.snapshot.paramMap.get('brand_id');
 
     this.showCatergories();
+    this.showCart();
   }  
 
   showCatergories() {
@@ -45,6 +50,19 @@ export class CategoriesComponent implements OnInit {
       this.router.navigate(['/products/brand_'+category_id]);
     else if(type=='C')
       this.router.navigate(['/products/cat_'+category_id]);
+  }
+
+  showCart() {
+    let sendData = {
+      customer_id: this.sess_customer_id
+    }
+
+    this.data.cartDetails(sendData).subscribe(
+      res => {
+        if(res.status == true) {
+          this.cart_number = res.data.length;
+        }
+      });
   }
 
   moveCart() {

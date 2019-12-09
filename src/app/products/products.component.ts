@@ -10,6 +10,8 @@ import { LoadingController } from '@ionic/angular';
 })
 export class ProductsComponent implements OnInit {
 
+  sess_customer_id:String;
+  cart_number:number = 0;
   id: string;
   products_fixed:any = [];
   products:any = [];
@@ -19,12 +21,15 @@ export class ProductsComponent implements OnInit {
     private data:DataService,
     private route:ActivatedRoute,
     public loadingController: LoadingController
-  ) { }
+  ) {
+    this.sess_customer_id = localStorage.getItem("sess_cust_id");
+  }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.showProducts();
+    this.showCart();
   }
 
   async showProducts() {
@@ -100,6 +105,19 @@ export class ProductsComponent implements OnInit {
     } else {
       this.products = this.products_fixed;
     }
+  }
+
+  showCart() {
+    let sendData = {
+      customer_id: this.sess_customer_id
+    }
+
+    this.data.cartDetails(sendData).subscribe(
+      res => {
+        if(res.status == true) {
+          this.cart_number = res.data.length;
+        }
+      });
   }
 
   moveCart() {

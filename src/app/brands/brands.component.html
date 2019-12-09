@@ -17,21 +17,24 @@
     </ion-buttons>
     <ion-title color="light">
       Brands
-      <span style="float: right;" (click)="moveCart()"><i class="fa fa-shopping-cart"></i></span>
+      <span style="float: right;" (click)="moveCart()">
+        <i class="fa fa-shopping-cart"></i>
+        <div *ngIf="cart_number != 0" class="numberCircle">{{cart_number}}</div>
+      </span>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<div class="container">
+  <div class="container">
 
-  <div class="row">
-    <div class="col-12 brand">
-      <div *ngFor="let brand of brands">
-        <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/brand/{{brand.image_name}}" alt="{{brand.name}}" (click)="moveCategory(brand.id)" />
+    <div class="row">
+      <div class="col-12 brand">
+        <div *ngFor="let brand of brands">
+          <img src="http://phpstack-304562-945735.cloudwaysapps.com/crm/upload/brand/{{brand.image_name}}" alt="{{brand.name}}" (click)="moveCategory(brand.id)" />
+        </div>
       </div>
     </div>
+    
   </div>
-  
-</div>
 </ion-content>

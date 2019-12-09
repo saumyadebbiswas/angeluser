@@ -163,8 +163,8 @@ export class EditprofileComponent implements OnInit {
     }
   }
 
-  moveCart() {
-    this.router.navigate(['/cart']);
-  }
+  // moveCart() {
+  //   this.router.navigate(['/cart']);
+  // }
 
 }

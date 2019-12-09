@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
 
   sess_customer_id:String;
   quanty: any = {};
-
+  cart_number:number = 0;
   cart:any = [];
 
   constructor(
@@ -40,13 +40,17 @@ export class CartComponent implements OnInit {
     this.data.cartDetails(sendData).subscribe(
       res => {
         if(res.status == true) {
+          this.cart_number = res.data.length;
           this.cart = res.data;
-          console.log('Cart show details.........', this.cart);
+          //console.log('Cart show details.........', this.cart);
 
           this.cart.forEach((elem, i) => {
             this.quanty[`qty_${i}`] = elem.cart_product_qty;
           });
         } else {
+          this.quanty = {};
+          this.cart_number = 0;
+          this.cart = [];
           console.log(res.message);
         }
       });
@@ -179,10 +183,6 @@ export class CartComponent implements OnInit {
       });*/
     
     // this.hideLoader();
-  }
-
-  moveCart() {
-    this.router.navigate(['/cart']);
   }
 
 }

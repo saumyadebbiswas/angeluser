@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class EnquiryComponent implements OnInit {
 
   sess_customer_id:String;
+  cart_number:number = 0;
   orders_fixed: any = [];
   orders: any = [];
 
@@ -26,6 +27,7 @@ export class EnquiryComponent implements OnInit {
 
   ionViewWillEnter(){
     this.showOrders();
+    this.showCart();
   }
 
   showOrders() {
@@ -63,6 +65,19 @@ export class EnquiryComponent implements OnInit {
 
   moveOrderDetails(order_id) {
     this.router.navigate(['/enquiries/'+order_id]);
+  }
+
+  showCart() {
+    let sendData = {
+      customer_id: this.sess_customer_id
+    }
+
+    this.data.cartDetails(sendData).subscribe(
+      res => {
+        if(res.status == true) {
+          this.cart_number = res.data.length;
+        }
+      });
   }
 
   moveCart() {

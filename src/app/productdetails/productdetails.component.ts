@@ -44,6 +44,7 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   sess_customer_id:String;
+  cart_number:number = 0;
 
   product_id: string;
   product:any = [];
@@ -69,6 +70,7 @@ export class ProductdetailsComponent implements OnInit {
     this.product_id = this.route.snapshot.paramMap.get('id');
 
     this.showProduct();
+    this.showCart();
   }
 
   async showProduct() {
@@ -165,6 +167,7 @@ export class ProductdetailsComponent implements OnInit {
         if(res.status == true) {
           //console.log('Add to cart.........', res);
           this.check_cart = true; 
+          this.cart_number = this.cart_number + 1;
 
           const toast = await this.toastController.create({
             message: 'Added to cart successfully.',
@@ -182,6 +185,19 @@ export class ProductdetailsComponent implements OnInit {
           alert.present();
         }          
     });
+  }
+
+  showCart() {
+    let sendData = {
+      customer_id: this.sess_customer_id
+    }
+
+    this.data.cartDetails(sendData).subscribe(
+      res => {
+        if(res.status == true) {
+          this.cart_number = res.data.length;
+        }
+      });
   }
 
   moveCart() {
