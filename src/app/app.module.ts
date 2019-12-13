@@ -68,3 +68,27 @@ import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+
+
+
+
+
+// <?xml version="1.0" encoding="utf-8"?>
+// <network-security-config>
+//     <base-config cleartextTrafficPermitted="true">
+//         <trust-anchors>
+//             <certificates src="system" />
+//         </trust-anchors>
+//     </base-config>
+//     <domain-config cleartextTrafficPermitted="true">
+//         <domain includeSubdomains="true">localhost</domain>
+//         <domain includeSubdomains="true">www.omdbapi.com</domain>
+//         <domain includeSubdomains="true">www.cloudinary.com</domain>
+//         <domain includeSubdomains="true">52.64.252.144:3000</domain>
+//         <domain includeSubdomains="true">cloudwaysapps.com</domain>
+//         <domain includeSubdomains="true">bootstrapcdn.com</domain>
+//         <domain includeSubdomains="true">googleapis.com</domain>
+//         <domain includeSubdomains="true">cloudflare.com</domain>
+//     </domain-config>
+// </network-security-config>
