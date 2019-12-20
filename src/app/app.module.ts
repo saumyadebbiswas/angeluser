@@ -28,6 +28,7 @@ import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
     CartComponent,
     SettingsComponent,
     CheckoutComponent,
-    OrderdetailsComponent
+    OrderdetailsComponent,
+    ResetPasswordComponent
   ],
   entryComponents: [],
   imports: [

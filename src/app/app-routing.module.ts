@@ -15,6 +15,7 @@ import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'enquiries/:id', component: OrderdetailsComponent }
+  { path: 'enquiries/:id', component: OrderdetailsComponent },
+  { path: 'reset-password', component: ResetPasswordComponent }
   
 ];
 
