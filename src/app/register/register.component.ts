@@ -120,4 +120,8 @@ export class RegisterComponent implements OnInit {
 		return await loading.present();
   }
 
+  moveLogin() {
+    this.router.navigate(['/signin']);
+  }
+
 }

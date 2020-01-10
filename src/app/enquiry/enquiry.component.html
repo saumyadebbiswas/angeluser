@@ -29,7 +29,7 @@
 
       <div class="col-9 product-description">
         <h4>Order ID: {{order.order_id}}</h4>
-        <p>Date: {{order.order_created | date: "MMM dd, yyyy hh:mm a"}}</p>
+        <p>Date: {{showDate(order.order_created)}}</p>
         <p *ngIf="order.order_status == 0">Status: Cancelled</p>
         <p *ngIf="order.order_status == 1">Status: Pending</p>
         <p *ngIf="order.order_status == 2">Status: Processing</p>

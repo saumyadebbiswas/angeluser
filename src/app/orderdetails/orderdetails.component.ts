@@ -90,6 +90,40 @@ export class OrderdetailsComponent implements OnInit {
       });
   }
 
+  showDate(order_created) {
+    if(order_created != null) {
+      let order_created_arr = order_created.split(' ');
+      
+      let order_date_arr = order_created_arr[0].split('-');
+      if(order_date_arr[1] == '01') { order_date_arr[1] = 'Jan' }
+      else if(order_date_arr[1] == '02') { order_date_arr[1] = 'Feb' }
+      else if(order_date_arr[1] == '03') { order_date_arr[1] = 'Mar' }
+      else if(order_date_arr[1] == '04') { order_date_arr[1] = 'Apr' }
+      else if(order_date_arr[1] == '05') { order_date_arr[1] = 'May' }
+      else if(order_date_arr[1] == '06') { order_date_arr[1] = 'Jun' }
+      else if(order_date_arr[1] == '07') { order_date_arr[1] = 'Jul' }
+      else if(order_date_arr[1] == '08') { order_date_arr[1] = 'Aug' }
+      else if(order_date_arr[1] == '09') { order_date_arr[1] = 'Sep' }
+      else if(order_date_arr[1] == '10') { order_date_arr[1] = 'Oct' }
+      else if(order_date_arr[1] == '11') { order_date_arr[1] = 'Nov' }
+      else if(order_date_arr[1] == '12') { order_date_arr[1] = 'Dec' }
+
+      let order_date = order_date_arr[1]+' '+order_date_arr[2]+', '+order_date_arr[0];
+
+      let order_time_arr = order_created_arr[1].split(':');
+      let meridian = 'AM';
+      if(order_time_arr[0] > 12) {
+        order_time_arr[0] = order_time_arr[0]%12;
+        meridian = 'PM';
+      }
+      let order_time = order_time_arr[0]+':'+order_time_arr[1]+' '+meridian;
+
+      return order_date+' '+order_time;
+    } else {
+      return '-';
+    }
+  }
+
   moveCart() {
     this.router.navigate(['/cart']);
   }

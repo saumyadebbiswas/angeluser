@@ -20,7 +20,7 @@
       <h5>Total Amount: <span class="price">{{total_amount | currency:'INR':true:'1.2-2'}}</span></h5>
       <h5>Total Items: <span class="price">{{total_item}} Pieces</span></h5>
       
-      <p>Order Date: {{order_details.order_created | date: "MMM dd, yyyy hh:mm a"}}</p>
+      <p>Order Date: {{showDate(order_details.order_created)}}</p>
       <p *ngIf="order_details.order_payment_type == '1'">Payment Type: Credit</p>
       <p *ngIf="order_details.order_payment_type == '2'">Payment Type: Cash</p>
       
